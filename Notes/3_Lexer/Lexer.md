@@ -1,3 +1,6 @@
+- `main.c`
+
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <memory.h>
@@ -484,7 +487,7 @@ int main(int argc, char **argv)
     bp = sp = (int *) ((int) stack + poolsize);
     ax = 0;
 
-
+    
     src = "char else enum if int return sizeof while "
             "open read close printf malloc memset memcmp exit void main";
 
@@ -511,7 +514,7 @@ int main(int argc, char **argv)
     next();
     // 把 void 当成 char 处理（简化语法）
     current_id[Token] = Char; // handle void type
-
+    
     next();
     // 保存 main 函数位置
     idmain = current_id; // keep track of main
@@ -542,3 +545,5 @@ int main(int argc, char **argv)
 
     return eval();
 }
+
+```
