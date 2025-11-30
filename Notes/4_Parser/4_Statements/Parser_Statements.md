@@ -1,3 +1,4 @@
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <memory.h>
@@ -820,7 +821,7 @@ int eval()
             sp = sp - *pc++; // 为局部变量分配空间
         }
         // Adjust stack 弹出参数（函数返回前恢复栈）
-        else if (op == ADJ) { sp = sp + *pc++; } // add esp, <size>
+        else if (op == ADJ) { sp = sp + *pc++; } // add esp, <size> 
         else if (op == LEV) // leave subroutine
         {
             sp = bp; // 把 sp 直接恢复到当前函数的基址（bp），也就是局部变量开始的位置
@@ -993,3 +994,5 @@ int main(int argc, char **argv)
 
     return eval();
 }
+
+```
