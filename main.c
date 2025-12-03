@@ -569,6 +569,8 @@ void expression(int level) {
             tmp = token;
             match(token);
             expression(Inc);
+
+            // 必须得是左值 (lvalue)
             if (*text == LC) {
                 *text = PUSH;  // to duplicate the address
                 *++text = LC;
@@ -576,13 +578,17 @@ void expression(int level) {
                 *text = PUSH;
                 *++text = LI;
             } else {
+                // 对非法左值（比如 ++(a+1)）会直接报错
                 printf("%d: bad lvalue of pre-increment\n", line);
                 exit(-1);
             }
+
             *++text = PUSH;
             *++text = IMM;
             // 也要处理指针的情况
             *++text = (expr_type > PTR) ? sizeof(int) : sizeof(char); // 指针读取为int (32-bit)
+            // ++p，p 是指向 int 的指针 → 实际变化：p = p + 4
+            // ++c，c 是 char → 实际变化：c = c + 1
             *++text = (tmp == Inc) ? ADD : SUB;
             *++text = (expr_type == CHAR) ? SC : SI;
         } else {
