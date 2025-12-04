@@ -1,3 +1,5 @@
+- `main.c`: 注意要在x86 32位系统下编译运行！（MSVC可以调节x86架构，gcc要加-m32参数）
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <memory.h>
@@ -1471,3 +1473,5 @@ int main(int argc, char **argv) {
 
     return eval();
 }
+
+```
