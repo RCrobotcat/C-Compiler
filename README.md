@@ -1,2 +1,2 @@
 # C-Compiler
-C-Compiler learning.
+C-Compiler(x86) learning.
